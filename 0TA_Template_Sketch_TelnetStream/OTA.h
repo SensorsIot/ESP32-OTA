@@ -3,7 +3,7 @@
 #include <ESPmDNS.h>
 #else
 #include <ESP8266WiFi.h>
-#include <ESP8266mDNS.h> 
+#include <ESP8266mDNS.h>
 #endif
 
 #include <WiFiUdp.h>
@@ -13,6 +13,14 @@
 
 const char* ssid = mySSID;
 const char* password = myPASSWORD;
+
+#ifdef ESP32_RTOS
+void taskOne( void * parameter )
+{
+  ArduinoOTA.handle();
+  delay(3500);
+}
+#endif
 
 void setupOTA() {
   WiFi.mode(WIFI_STA);
@@ -65,4 +73,14 @@ void setupOTA() {
   Serial.println("OTA Initialized");
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
+
+#ifdef ESP32_RTOS
+  xTaskCreate(
+    ota_handle,          /* Task function. */
+    "OTA_HANDLE",        /* String with name of task. */
+    10000,            /* Stack size in bytes. */
+    NULL,             /* Parameter passed as input of the task */
+    1,                /* Priority of the task. */
+    NULL);            /* Task handle. */
+#endif
 }
