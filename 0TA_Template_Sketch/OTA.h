@@ -14,7 +14,7 @@
 const char* ssid = mySSID;
 const char* password = myPASSWORD;
 
-#ifdef ESP32_RTOS && ESP32
+#if defined(ESP32_RTOS) && defined(ESP32)
 void taskOne( void * parameter )
 {
   ArduinoOTA.handle();
@@ -73,7 +73,7 @@ void setupOTA() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 
-#ifdef ESP32_RTOS && ESP32
+#if defined(ESP32_RTOS) && defined(ESP32)
   xTaskCreate(
     ota_handle,          /* Task function. */
     "OTA_HANDLE",        /* String with name of task. */
