@@ -15,7 +15,7 @@ void setup() {
 }
 
 void loop() {
-#ifndef ESP32_RTOS && ESP32
+#ifndef ESP32_RTOS
   ArduinoOTA.handle();
 #endif
 
