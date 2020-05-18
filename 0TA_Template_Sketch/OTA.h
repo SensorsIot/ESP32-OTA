@@ -2,7 +2,7 @@
 #include <ESPmDNS.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
-#include <credentials.h>
+#include <wifi_credentials.h>
 
 const char* ssid = mySSID;
 const char* password = myPASSWORD;
