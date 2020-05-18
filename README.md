@@ -1,3 +1,7 @@
-# ESP32 OTA
+# ESP=OTA
  
-Material for my YouTube video
+Forked from Andreas Spiess https://github.com/SensorsIot/ESP32-OTA
+
+Added ESP266 support
+
+Renamed to ESP-OTA
