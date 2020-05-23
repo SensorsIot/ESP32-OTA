@@ -5,8 +5,10 @@ unsigned long entry;
 void setup() {
   Serial.begin(115200);
   Serial.println("Booting");
-  ArduinoOTA.setHostname("TemplateSketch");
-  setupOTA();
+  
+  setupOTA("TemplateSketch");
+
+  // your code here
   
 }
 
@@ -16,4 +18,7 @@ void loop() {
   TelnetStream.println(micros()-entry);
   TelnetStream.println("Loop");
   delay(1000);
+
+  // your code here
+
 }

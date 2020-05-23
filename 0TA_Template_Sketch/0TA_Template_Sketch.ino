@@ -4,8 +4,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Booting");
 
-  ArduinoOTA.setHostname("TemplateSketch");
-  setupOTA();
+  setupOTA("TemplateSketch");
 
   // your code
 
