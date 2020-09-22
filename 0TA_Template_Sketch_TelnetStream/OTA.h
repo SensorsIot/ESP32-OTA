@@ -41,7 +41,7 @@ void setupOTA(const char* nameprefix, const char* ssid, const char* password) {
   }
 
   // Port defaults to 3232
-  // ArduinoOTA.setPort(3232);
+  // ArduinoOTA.setPort(3232); // Use 8266 port if you are working in Sloeber IDE, it is fixed there and not adjustable
 
   // No authentication by default
   // ArduinoOTA.setPassword("admin");
@@ -51,6 +51,7 @@ void setupOTA(const char* nameprefix, const char* ssid, const char* password) {
   // ArduinoOTA.setPasswordHash("21232f297a57a5a743894a0e4a801fc3");
 
   ArduinoOTA.onStart([]() {
+	//NOTE: make .detach() here for all functions called by Ticker.h library - not to interrupt transfer process in any way.
     String type;
     if (ArduinoOTA.getCommand() == U_FLASH)
       type = "sketch";
