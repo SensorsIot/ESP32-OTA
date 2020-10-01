@@ -15,10 +15,12 @@ const char* ssid = mySSID;
 const char* password = myPASSWORD;
 
 #if defined(ESP32_RTOS) && defined(ESP32)
-void taskOne( void * parameter )
+void ota_handle( void * parameter )
 {
-  ArduinoOTA.handle();
-  delay(3500);
+  for (;;) {
+    ArduinoOTA.handle();
+    delay(3500);
+  }
 }
 #endif
 
