@@ -1,7 +1,7 @@
 #include "OTA.h"
 unsigned long entry;
 
-// #define ESP32_RTOS  // Uncomment this line if you want to use the code with freertos (only works on the ESP32)
+// #define ESP32_RTOS 1  // Uncomment this line if you want to use the code with freertos (only works on the ESP32)
 
 void setup() {
   Serial.begin(115200);
