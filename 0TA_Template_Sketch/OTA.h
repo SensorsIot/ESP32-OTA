@@ -9,16 +9,19 @@
 
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
-#include <credentials.h>
+#include "credentials.h"
 
 const char* ssid = mySSID;
 const char* password = myPASSWORD;
 
 #if defined(ESP32_RTOS) && defined(ESP32)
-void taskOne( void * parameter )
+void ota_handle( void * parameter )
 {
-  ArduinoOTA.handle();
-  delay(3500);
+  while (true)    // to avoid: "E (4725) FreeRTOS: FreeRTOS Task "OTA_HANDLE" should not return, Aborting now!"
+  {
+    ArduinoOTA.handle();
+    delay(3500);
+  }
 }
 #endif
 
