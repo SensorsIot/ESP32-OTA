@@ -10,9 +10,7 @@ void setup() {
   
 }
 
-void loop() {
-  TelnetStream.read();  // Seems including this line in the loop is the only way to get anything to display with TelnetStream
-  
+void loop() { 
   entry=micros();
   
   #ifndef ESP32_RTOS
