@@ -1,6 +1,5 @@
-#include "OTA.h"
-
 // #define ESP32_RTOS  // Uncomment this line if you want to use the code with freertos (only works on the ESP32)
+#include "OTA.h"
 
 unsigned long entry;
 
@@ -11,7 +10,7 @@ void setup() {
   
 }
 
-void loop() {
+void loop() { 
   entry=micros();
   
   #ifndef ESP32_RTOS
