@@ -14,7 +14,7 @@ void setup() {
 }
 
 void loop() {
-#ifdef defined(ESP32_RTOS) && defined(ESP32)
+#if defined(ESP32_RTOS) && defined(ESP32)
 #else // If you do not use FreeRTOS, you have to regulary call the handle method.
   ArduinoOTA.handle();
 #endif
