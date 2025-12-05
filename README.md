@@ -1,20 +1,47 @@
 # ESP32 OTA
 
-Material for my YouTube [video](https://www.youtube.com/watch?v=1pwqS_NUG7Q).
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/SensorsIot/ESP32-OTA)](https://github.com/SensorsIot/ESP32-OTA/stargazers)
+[![YouTube](https://img.shields.io/badge/YouTube-Video-red?logo=youtube)](https://www.youtube.com/watch?v=1pwqS_NUG7Q)
 
-## Installation
+![ESP32](https://img.shields.io/badge/ESP32-Supported-green?logo=espressif)
+![Arduino](https://img.shields.io/badge/Arduino-Compatible-00979D?logo=arduino)
+![OTA](https://img.shields.io/badge/OTA-Over--The--Air-blue)
 
-In order to use the code provided in this repository you need to provide the credentials of your access point. Or you can comment out the `#include <credentials.h>` and define the ``mySSID`` and ``myPASSWORD`` to the `setupOTA("TemplateSketch", mySSID, myPASSWORD)` function.
+Over-The-Air (OTA) update template for ESP32.
 
-### Provide your credentials
+📺 **Video Tutorial:** https://www.youtube.com/watch?v=1pwqS_NUG7Q
 
-Create a `credentials.h` file (in the sketch folder directly or in the Arduino library folder).
-For Windows, the library folder is located in the same folder as the  sketch (`[...]\Arduino\libraries\Credentials`, `[...]\Arduino`).
+## ⚠️ Important
 
-The text file `credentials.h` looks like:
+The `setupOTA()` function **replaces** `WiFi.begin()` - do not call both! The `setupOTA()` function handles WiFi connection internally.
 
-```c++
-#pragma once
-const char* mySSID = "SSID of your AP";
-const char* myPASSWORD = "Password of your AP";
+```cpp
+// ❌ Wrong - don't do this
+WiFi.begin(ssid, password);
+setupOTA("DeviceName", ssid, password);
+
+// ✅ Correct - setupOTA handles WiFi
+setupOTA("DeviceName", ssid, password);
 ```
+
+## ⚙️ Configuration
+
+### 📶 WiFi Credentials
+
+Create a `credentials.h` file in the sketch folder:
+
+```cpp
+#pragma once
+const char* mySSID = "your-wifi-name";
+const char* myPASSWORD = "your-wifi-password";
+```
+
+Or comment out `#include <credentials.h>` and define credentials directly in the sketch.
+
+## 📁 Examples
+
+| Folder | Description |
+|--------|-------------|
+| `0TA_Template_Sketch/` | Basic OTA template |
+| `0TA_Template_Sketch_TelnetStream/` | OTA with Telnet debugging |
