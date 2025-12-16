@@ -20,7 +20,7 @@ void ota_handle( void * parameter ) {
 
 void setupOTA(const char* nameprefix, const char* ssid, const char* password) {
   // Configure the hostname
-  uint16_t maxlen = strlen(nameprefix) + 7;
+  uint16_t maxlen = strlen(nameprefix) + 7 + 1; // +1 adds space for trailing \0, otherwise the final symbol in suffix is missed
   char *fullhostname = new char[maxlen];
   uint8_t mac[6];
   WiFi.macAddress(mac);
